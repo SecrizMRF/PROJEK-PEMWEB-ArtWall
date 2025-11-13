@@ -1,11 +1,42 @@
 import { BadgeCheck, X } from 'lucide-react'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 const StoryViewer = ({viewStory, setViewStory}) => {
+
+    const [progress, setProgress] = useState(0)
+
+    useEffect(()=>{
+        let timer, progressInterval;
+
+        if(viewStory && viewStory.media_type !== 'video'){
+            setProgress(0)
+
+            const duration = 10000;
+            const setTime = 100;
+            let elpased = 0;
+
+            progressInterval = setInterval(() => {
+                elpased += setTime;
+                setProgress((elpased / duration) * 100);
+            }, setTime);
+            // tutup story
+            timer = setTimeout(()=>{
+                setViewStory(null)
+            }, duration)
+        }
+
+        return ()=>{
+            clearTimeout(timer);
+            clearInterval(progressInterval)
+        }
+
+    }, [viewStory, setViewStory])
 
     const handleClose = ()=> {
         setViewStory(null)
     }
+
+    if(!viewStory) return null
 
     const renderContent = ()=> {
         switch (viewStory.media_type) {
@@ -15,7 +46,7 @@ const StoryViewer = ({viewStory, setViewStory}) => {
                 )
             case 'video':
                 return(
-                    <video onEnded={()=>setViewStory(null)} src={viewStory.media_url} className='max-h-screen'/>
+                    <video onEnded={()=>setViewStory(null)} src={viewStory.media_url} className='max-h-screen' controls autoPlay/>
                 )
             case 'text':
                 return(
@@ -36,7 +67,7 @@ const StoryViewer = ({viewStory, setViewStory}) => {
       
         {/* Progress bar */}
         <div className='absolute top-0 left-0 w-full h-1 bg-gray-700'>
-            <div className='h-full bg-white transition-all duration-100 linear' style={{width: '50'}}>
+            <div className='h-full bg-white transition-all duration-100 linear' style={{width: `${progress}%`}}>
 
             </div>
         </div>
