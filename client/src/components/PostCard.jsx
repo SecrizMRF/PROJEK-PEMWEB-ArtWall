@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom'
 
 const PostCard = ({post}) => {
 
-    const postWithHashtags = post.content.replace(/(#\w+)/g, '<span class="text-indigo-600">$1</span>')
+    const postWithHashtags = post.content.replace(/(#\w+)/g, '<span class="text-orange-400">$1</span>')
     const [likes, setLikes] = useState(post.likes_count)
     const currentUser = dummyUserData
 
@@ -32,10 +32,10 @@ const PostCard = ({post}) => {
       {/* Content */}
       {post.content && <div className='text-gray-800 text-sm whitespace-pre-line' dangerouslySetInnerHTML={{__html: postWithHashtags}}/>}
 
-      {/* !BUG (ukuran) images 2:42:00*/}
-      <div className='grid grid-cols-2 gap-2'>
+      {/* !BUG (ukuran) */}
+      <div className='grid grid-col gap-2'>
             {post.image_urls.map((img, index)=>(
-                <img src={img} key={index} className={`w-full h-48 object-cover rounded-lg ${post.image_urls.legth === 1 && 'col-span-2 h-auto'}`} alt="" />
+                <img src={img} key={index} className={`w-full h-full object-cover rounded-lg ${post.image_urls.legth === 1 && 'col-span-2 h-auto'}`} alt="" />
             ))}
       </div>
 

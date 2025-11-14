@@ -1,6 +1,6 @@
 import React from "react" 
 import { Route, Routes } from "react-router-dom"
-import Login from "./pages/login"
+import Login from "./pages/Login"
 import Feed from "./pages/feed"
 import Messages from "./pages/messages"
 import ChatBox from "./pages/ChatBox"

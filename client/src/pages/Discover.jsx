@@ -34,7 +34,7 @@ const Discover = () => {
           <div className='p-6'>
             <div className='relative'>
                 <Search className='absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400 w-5 h-5'/>
-                <input type="text" placeholder='Cari artist' className='pl-10 sm:pl-12 py-2 w-full border border-gray-300 rounded-md max-sm:text-sm'/>
+                <input type="text" placeholder='Cari artist' className='pl-10 sm:pl-12 py-2 w-full border border-gray-300 rounded-md max-sm:text-sm' onChange={(e)=>setInput(e.target.value)} value={input} onKeyUp={handleSearch}/>
             </div>
           </div>
         </div>
