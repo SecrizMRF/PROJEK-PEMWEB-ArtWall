@@ -30,7 +30,7 @@ export const dummyUserData = {
     "email": "admin@example.com",
     "full_name": "Fufu Fafa",
     "username": "fufufafa_",
-    "bio": "🌍 Elit Dunia | 📚 Mahasigma | 🚀 Sultan\r\nExploring life one step at a time.\r\n✨ Staying curious. Creating with purpose.",
+    "bio": "🌍 Dreamer | 📚 Learner | 🚀 Doer \r\nExploring life one step at a time.\r\n✨ Staying curious. Creating with purpose.",
     "profile_picture": sample_profile,
     "cover_photo": sample_cover,
     "location": "Indonesia, ID",
