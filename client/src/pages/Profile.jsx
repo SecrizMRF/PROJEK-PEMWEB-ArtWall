@@ -5,13 +5,14 @@ import { dummyPostsData, dummyUserData } from '../assets/assets'
 import UserProfileInfo from '../components/UserProfileInfo'
 import PostCard from '../components/PostCard'
 import moment from 'moment'
+import ProfileModal from '../components/ProfileModal'
 
 const Profile = () => {
   const {profileId} = useParams()
   const[user, setUser] = useState(null)
   const[posts, setPosts] = useState([])
   const[activeTab, setActiveTab] = useState('posts')
-  const[showEdit, setShowEdit] = useState('false')
+  const[showEdit, setShowEdit] = useState(false)
 
   const fetchUser = async () => {
     setUser(dummyUserData)
@@ -71,6 +72,8 @@ const Profile = () => {
 
         </div>
       </div>
+      {/* Edit profil */}
+      {showEdit && <ProfileModal setShowEdit={setShowEdit}/>}
     </div>
   ) : (<Loading/>)
 }
